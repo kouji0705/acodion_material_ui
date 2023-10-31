@@ -1,19 +1,28 @@
-import React from 'react';
-import { Accordion, AccordionSummary, AccordionDetails, Typography } from '@material-ui/core';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import React, { useState } from 'react';
+import {
+  Accordion,
+  AccordionSummary,
+  AccordionDetails,
+  Typography,
+} from '@material-ui/core';
+import { KeyboardArrowUp, KeyboardArrowRight } from '@material-ui/icons';
 
 export const MyAccordion: React.FC = () => {
+  const [expanded, setExpanded] = useState(false);
+  const toggleAccordion = () => {
+    setExpanded(!expanded);
+  };
+
   return (
-    <Accordion>
-      <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-        <Typography variant="h6">Accordion Title</Typography>
+    <Accordion expanded={expanded} onChange={toggleAccordion}>
+      <AccordionSummary
+        expandIcon={expanded ? <KeyboardArrowUp /> : <KeyboardArrowRight />}
+      >
+        <Typography variant="h6">アコーディオン タイトル</Typography>
       </AccordionSummary>
       <AccordionDetails>
-        <Typography>
-          This is the content of the accordion. You can put any content you want here.
-        </Typography>
+        <Typography>アコーディオンサンプルです！！！！</Typography>
       </AccordionDetails>
     </Accordion>
   );
 };
-
